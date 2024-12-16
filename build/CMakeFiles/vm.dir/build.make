@@ -69,28 +69,28 @@ include CMakeFiles/vm.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/vm.dir/flags.make
 
-CMakeFiles/vm.dir/main.c.o: CMakeFiles/vm.dir/flags.make
-CMakeFiles/vm.dir/main.c.o: /Users/ryan/Documents/Programming/vm/virtual-machine/main.c
-CMakeFiles/vm.dir/main.c.o: CMakeFiles/vm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ryan/Documents/Programming/vm/virtual-machine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vm.dir/main.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vm.dir/main.c.o -MF CMakeFiles/vm.dir/main.c.o.d -o CMakeFiles/vm.dir/main.c.o -c /Users/ryan/Documents/Programming/vm/virtual-machine/main.c
+CMakeFiles/vm.dir/src/main.c.o: CMakeFiles/vm.dir/flags.make
+CMakeFiles/vm.dir/src/main.c.o: /Users/ryan/Documents/Programming/vm/virtual-machine/src/main.c
+CMakeFiles/vm.dir/src/main.c.o: CMakeFiles/vm.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ryan/Documents/Programming/vm/virtual-machine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/vm.dir/src/main.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/vm.dir/src/main.c.o -MF CMakeFiles/vm.dir/src/main.c.o.d -o CMakeFiles/vm.dir/src/main.c.o -c /Users/ryan/Documents/Programming/vm/virtual-machine/src/main.c
 
-CMakeFiles/vm.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/vm.dir/main.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ryan/Documents/Programming/vm/virtual-machine/main.c > CMakeFiles/vm.dir/main.c.i
+CMakeFiles/vm.dir/src/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/vm.dir/src/main.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ryan/Documents/Programming/vm/virtual-machine/src/main.c > CMakeFiles/vm.dir/src/main.c.i
 
-CMakeFiles/vm.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/vm.dir/main.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ryan/Documents/Programming/vm/virtual-machine/main.c -o CMakeFiles/vm.dir/main.c.s
+CMakeFiles/vm.dir/src/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/vm.dir/src/main.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ryan/Documents/Programming/vm/virtual-machine/src/main.c -o CMakeFiles/vm.dir/src/main.c.s
 
 # Object files for target vm
 vm_OBJECTS = \
-"CMakeFiles/vm.dir/main.c.o"
+"CMakeFiles/vm.dir/src/main.c.o"
 
 # External object files for target vm
 vm_EXTERNAL_OBJECTS =
 
-vm: CMakeFiles/vm.dir/main.c.o
+vm: CMakeFiles/vm.dir/src/main.c.o
 vm: CMakeFiles/vm.dir/build.make
 vm: CMakeFiles/vm.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ryan/Documents/Programming/vm/virtual-machine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable vm"

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/ryan/Documents/Programming/vm/virtual-machine/main.c" "CMakeFiles/vm.dir/main.c.o" "gcc" "CMakeFiles/vm.dir/main.c.o.d"
+  "/Users/ryan/Documents/Programming/vm/virtual-machine/src/main.c" "CMakeFiles/vm.dir/src/main.c.o" "gcc" "CMakeFiles/vm.dir/src/main.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
