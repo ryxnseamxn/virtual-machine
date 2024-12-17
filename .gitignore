@@ -1,7 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/cmake,visualstudiocode,macos
 # Edit at https://www.toptal.com/developers/gitignore?templates=cmake,visualstudiocode,macos
 
-### CMake ###
+### CMake ###  
+build/
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -53,11 +54,6 @@ Temporary Items
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
 
 # Local History for Visual Studio Code
 .history/
