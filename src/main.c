@@ -61,6 +61,16 @@ enum
     OP_TRAP    /* execute trap */
 };
 
+enum
+{
+    TRAP_GETC = 0x20,  /* get character from keyboard, not echoed onto the terminal */
+    TRAP_OUT = 0x21,   /* output a character */
+    TRAP_PUTS = 0x22,  /* output a word string */
+    TRAP_IN = 0x23,    /* get character from keyboard, echoed onto the terminal */
+    TRAP_PUTSP = 0x24, /* output a byte string */
+    TRAP_HALT = 0x25   /* halt the program */
+};
+
 int main(int argc, const char* argv[])
 {
     if (argc < 2)
@@ -176,7 +186,7 @@ int main(int argc, const char* argv[])
             {
                 uint16_t r0 = (instr >> 9) & 0x7; 
                 uint16_t pc_offset = sign_extend(instr & 0x1FF, 9); 
-                reg[r0] = memory[reg[R_PC] + pc_offset]; 
+                reg[r0] = mem_read(reg[R_PC] + pc_offset); 
                 update_flags(r0);
             }
                 break;
@@ -187,27 +197,73 @@ int main(int argc, const char* argv[])
                 /* PCoffset 9*/
                 uint16_t pc_offset = sign_extend(instr & 0x1FF, 9);
                 /* add pc_offset to the current PC, look at that memory location to get the final address */
-                reg[r0] = mem_read(mem_read(reg[R_PC] + pc_offset));
+                reg[r0] = mem_read(reg[R_PC] + pc_offset);
                 update_flags(r0);
             }
                 break;
             case OP_LDR:
-                // @{LDR}
+            {
+                uint16_t r0 = (instr >> 9) & 0x7;
+                uint16_t r1 = (instr >> 6) & 0x7;
+                uint16_t offset = sign_extend(instr & 0x3F, 6);
+                reg[r0] = mem_read(reg[r1] + offset);
+                update_flags(r0);
+            }
                 break;
             case OP_LEA:
-                // @{LEA}
+                {
+                    uint16_t r0 = (instr >> 9) & 0x7; 
+                    reg[r0] = reg[R_PC] + sign_extend(instr & 0x1FF, 9); 
+                    update_flags(r0); 
+                }
                 break;
             case OP_ST:
-                // @{ST}
+            {
+                uint16_t r0 = (instr >> 9) & 0x7; 
+                uint16_t pc_offset = sign_extend(instr & 0x1FF, 9) ;
+                mem_write(reg[R_PC] + pc_offset, reg[r0]); 
+            }
                 break;
             case OP_STI:
-                // @{STI}
+                {
+                    uint16_t r0 = (instr >> 9) & 0x7; 
+                    uint16_t pc_offset = sign_extend(instr & 0x1FF, 9); 
+                    mem_write(mem_read(reg[R_PC] + pc_offset), reg[r0]);
+                }
                 break;
             case OP_STR:
-                // @{STR}
+                {
+                    uint16_t r0 = (instr >> 9) & 0x7; 
+                    uint16_t r1 = (instr >> 6) & 0x7; 
+                    uint16_t offset = sign_extend(instr & 0x3F, 6); 
+                    mem_write(reg[r1] + offset, reg[r0]);
+                }
                 break;
             case OP_TRAP:
-                // @{TRAP}
+                {
+                    reg[R_R7] = reg[R_PC];
+                    switch (instr & 0xFF)
+                    {
+                        case TRAP_GETC:
+                            // @{TRAP GETC}
+                            break;
+                        case TRAP_OUT:
+                            // @{TRAP OUT}
+                            break;
+                        case TRAP_PUTS:
+                            // @{TRAP PUTS}
+                            break;
+                        case TRAP_IN:
+                            // @{TRAP IN}
+                            break;
+                        case TRAP_PUTSP:
+                            // @{TRAP PUTSP}
+                            break;
+                        case TRAP_HALT:
+                            // @{TRAP HALT}
+                            break;
+                    }
+                }
                 break;
             case OP_RES:
                 break; 
