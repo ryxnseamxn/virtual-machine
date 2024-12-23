@@ -245,33 +245,68 @@ int main(int argc, const char* argv[])
                     switch (instr & 0xFF)
                     {
                         case TRAP_GETC:
-                            // @{TRAP GETC}
+                            {
+                                reg[R_R0] = (uint16_t)getchar();    
+                                update_flags(R_R0); 
+                            }
                             break;
                         case TRAP_OUT:
-                            // @{TRAP OUT}
+                            {
+                                putc((char)R_R0, stdout);
+                                fflush(stdout); 
+                            }
                             break;
                         case TRAP_PUTS:
-                            // @{TRAP PUTS}
+                            {
+                                uint16_t* c = memory + reg[R_R0];
+                                while (*c)
+                                {
+                                    putc((char)*c, stdout);
+                                    ++c;
+                                }
+                                fflush(stdout);
+                            }
                             break;
                         case TRAP_IN:
-                            // @{TRAP IN}
+                            {
+                                printf("Enter a character: ");
+                                char c = (char)getchar();
+                                putc(c, stdout);
+                                fflush(stdout);
+                                reg[R_R0] = (uint16_t)c;
+                                update_flags(R_R0);
+                            }
                             break;
                         case TRAP_PUTSP:
-                            // @{TRAP PUTSP}
+                            {
+                                uint16_t* c = memory + reg[R_R0];
+                                while (*c)
+                                {
+                                    char char1 = (*c) & 0xFF;
+                                    putc(char1, stdout);
+                                    char char2 = (*c) >> 8;
+                                    if (char2) putc(char2, stdout);
+                                    ++c;
+                                }
+                                fflush(stdout);
+                            }
                             break;
                         case TRAP_HALT:
-                            // @{TRAP HALT}
+                            {
+                                puts("HALT");
+                                fflush(stdout);
+                                running = 0;
+                            }
                             break;
                     }
                 }
                 break;
             case OP_RES:
-                break; 
+                abort(); 
             case OP_RTI:
-                break; 
+                abort(); 
             default:
-                // @{BAD OPCODE}
-                break;
+                abort(); 
         }
     }
     // @{Shutdown}
